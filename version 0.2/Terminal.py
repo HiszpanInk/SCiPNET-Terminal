@@ -1,6 +1,5 @@
 import time
 
-
 class Terminal:
     turnoff = "False"
     accessLevel = 0
