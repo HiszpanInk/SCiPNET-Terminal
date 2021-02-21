@@ -1,4 +1,5 @@
 import urllib.request
+from bs4 import BeautifulSoup
 import sys
 
 def access(number):
@@ -12,12 +13,11 @@ def access(number):
     scpText = scpText.split('<span style="text-decoration: underline;">Creator Information</span>')[0]
 
     scpText = scpText.replace('\\n', '\n')
+    scpText = scpText.replace('<br />', '\n')
     scpText = scpText.replace('.', '.\n')
     #czyszczenie tekstu ze znaczników hateemel
-    toClean = ["<p>", "</p>", "<strong>", "</strong>", "<hr />"]
-    for x in range(0, len(toClean)):
-        scpText = scpText.replace(toClean[x], '')
-    return scpText
+    scpTextOutput = (BeautifulSoup(scpText, features="html.parser")).get_text()
+    return scpTextOutput
 
 def exit():
     sys.exit()
