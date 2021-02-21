@@ -7,7 +7,8 @@ scpHTML = urllib.request.urlopen(scpURL).read()
 scpText = str(scpHTML)
 scpText = scpText.split('<div id="page-content">')[1]
 scpText = scpText.split('<div class="footer-wikiwalk-nav">')[0]
-print(scpText)
+scpText = scpText.split('<p><strong>', 1)[1]
+print(scpText.replace('\\n', '\n'))
 
 """
 def access(number):
